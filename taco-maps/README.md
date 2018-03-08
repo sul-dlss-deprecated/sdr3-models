@@ -1,4 +1,4 @@
-# TACO Metadata Application Profiles (MAPs)
+# 🌮 TACO Metadata Application Profiles (MAPs) 🗺️
 
 This directory contains the metadata application profiles, or MAPs, for resources managed by TACO.
 
