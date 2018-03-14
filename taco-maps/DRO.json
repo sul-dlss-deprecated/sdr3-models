@@ -154,7 +154,7 @@
       "required": ["identifier", "sdrUUID"],
       "properties": {
         "catkey": {
-          "description": "Catalog bibliographic record identifier (or ‘catkey’) for the same digital object being described by the bibliographic record.",
+          "description": "Catalog bibliographic record identifier (or ‘catkey’) for a record describing a resource that the digital object represents in whole or part.",
           "type": "string"
         },
         "doi": {
