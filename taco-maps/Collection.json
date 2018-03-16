@@ -156,7 +156,7 @@
           "type": "string"
         },
         "sourceId": {
-          "description": "For anything that cannot cleanly map into isRepresentationOf.",
+          "description": "A source resource or object (perhaps but not necessarily analog or physical) that the Collection is a digital representation of.",
           "type": "string"
         },
         "sdrUUID": {
