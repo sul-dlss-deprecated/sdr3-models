@@ -155,7 +155,7 @@
       "properties": {
         "catkey": {
           "description": "Catalog bibliographic record identifier (or ‘catkey’) for a record describing a resource that the digital object represents in whole or part.",
-          "type": "string"
+           "type": "string"
         },
         "doi": {
           "description": "Digital Object Identifier (DOI) for the DRO within this repository.",
@@ -165,16 +165,12 @@
           "description": "Identifier for the DRO within SDR.",
           "type": "string"
         },
-        "isRepresentationOf": {
-          "description": "A source resource or object (perhaps but not necessarily analog or physical) that the DRO is a digital representation of.",
-          "type": "string"
-        },
         "sameAs": {
           "description": "Another object, either external or internal to the system (if duplication occurs) that is the same digital resource as this DRO.",
           "type": "string"
         },
         "sourceId": {
-          "description": "For anything that cannot cleanly map into is representation of.",
+          "description": "A source resource or object (perhaps but not necessarily analog or physical) that the DRO is a digital representation of.",
           "type": "string"
         },
         "sdrUUID": {
