@@ -153,9 +153,35 @@
       "type": "object",
       "required": ["identifier", "sdrUUID"],
       "properties": {
-        "catkey": {
-          "description": "Catalog bibliographic record identifier (or ‘catkey’) for a record describing a resource that the digital object represents in whole or part.",
-           "type": "string"
+        "catalogLinks": {
+          "description": "Links to catalog records for resource that the DRO represents in whole or part.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["catalog", "catalogRecordId"],
+            "properties": {
+              "catalog": {
+                "description": "Catalog that is the source of the linked record.",
+                "type": "string"
+              },
+              "catalogRecordId": {
+                "description": "Record identifier that is unique within the context of the linked record's catalog.",
+                "type": "string"
+              },
+              "recordSchema": {
+                "description": "Metadata schema of the linked record.",
+                "type": "string"
+              },
+              "deriveMetadata": {
+                "description": "If the DRO descriptive metadata should be automatically updated when the linked record changes.",
+                "type": "boolean"
+              },
+              "deliverMetadata": {
+                "description": "If the linked record should be automatically updated when the DRO descriptive metadata changes.",
+                "type": "boolean"
+              }
+            }
+          }
         },
         "doi": {
           "description": "Digital Object Identifier (DOI) for the DRO within this repository.",
