@@ -140,7 +140,7 @@
       "required": ["identifier", "sdrUUID"],
       "properties": {
         "catalogLinks": {
-          "description": "Links to catalog records for resource that the Collection represents in whole or part.",
+          "description": "Links to catalog records for the resource that the Collection represents in whole or part.",
           "type": "array",
           "items": {
             "type": "object",
@@ -165,6 +165,11 @@
               "deliverMetadata": {
                 "description": "If the linked record should be automatically updated when the Collection descriptive metadata changes.",
                 "type": "boolean"
+              },
+              "recordScope": {
+                "description": "Whether the linked record describes a resource that is broader than, equivalent to, or narrower than the resource the Collection represents.",
+                "type": "string",
+                "enum": ["broader", "equivalent", "narrower"]
               }
             }
           }
