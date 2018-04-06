@@ -3,7 +3,7 @@
   "title": "Digital Repository Object",
   "description": "Domain-defined abstraction of a 'work'. Digital Repository Objects' abstraction is describable for our domain’s purposes, i.e. for management needs within our system.",
   "type": "object",
-  "required": ["@context", "@type", "currentVersion", "id", "label", "version", "administrative", "access", "identification", "structural"],
+  "required": ["@context", "@type", "externalIdentifier", "label", "tacoIdentifier", "version", "administrative", "access", "identification", "structural"],
   "properties": {
     "@context": {
       "description": "URI for the JSON-LD context definitions.",
@@ -34,20 +34,24 @@
       "description": "Citation for the resource, including identifier, label, version, and a persistent URL to the object with SDR at the very least.",
       "type": "string"
     },
-    "currentVersion": {
-      "description": "If this is the current version (most recent version) for the resource.",
-      "type": "boolean"
+    "dedupeIdentifier": {
+      "description": "Identifier retrieved from identification.sourceId that stands for analog or source identifier that this resource is a digital representation of.",
+      "type": "string"
     },
     "depositor": {
       "description": "The Agent (User, Group, Application, Department, other) that deposited the DRO into SDR.",
-      "ref": "Agent.json"
+      "$ref": "Agent.json"
     },
-    "id": {
-      "description": "Identifier for the resource within TACO (should, but may not, overlap with `identification.identifier`, which is the SDR3 Identifier).",
+    "externalIdentifier": {
+      "description": "Identifier for the resource within SDR but outside of TACO. DRUID or UUID depending on resource type. Constant across resource versions. What clients will use calling TACO. Same as `identification.identifier`",
       "type": "string"
     },
     "label": {
       "description": "Primary processing label (can be same as title) for a DRO.",
+      "type": "string"
+    },
+    "tacoIdentifier": {
+      "description": "Identifier for the resource within TACO. UUID, unique for each new version of a TACO resource.",
       "type": "string"
     },
     "version": {
@@ -143,7 +147,7 @@
           "description": "The Agent (User, Group, Application, Department, other) that remediated a DRO in SDR.",
           "type": "array",
           "items": {
-            "ref": "Agent.json"
+            "$ref": "Agent.json"
           }
         }
       }
@@ -151,7 +155,7 @@
     "identification": {
       "description": "Identifying information for the DRO.",
       "type": "object",
-      "required": ["identifier", "sdrUUID"],
+      "required": ["identifier"],
       "properties": {
         "catalogLinks": {
           "description": "Links to catalog records for the resource that the DRO represents in whole or part.",
@@ -193,7 +197,7 @@
           "type": "string"
         },
         "identifier": {
-          "description": "Identifier for the DRO within SDR.",
+          "description": "Identifier for the Digital Repository Object within the Stanford Digital Repository system",
           "type": "string"
         },
         "sameAs": {
@@ -206,7 +210,7 @@
         },
         "sdrUUID": {
           "type": "string",
-          "description": "UUID for the DRO within TACO."
+          "description": "UUID previously minted for the resource within SDR2 / Fedora 3."
         }
       }
     },
@@ -222,8 +226,7 @@
           "description": "Agents who are required to approve deposit or management of this resource in SDR.",
           "type": "array",
           "items": {
-            "ref": "Agent.json"
-            }
+            "$ref": "Agent.json"
           }
         }
       }
@@ -258,11 +261,9 @@
         "hasMemberOrders": {
           "description": "Provided sequences or orderings of members of the Object, including some metadata about each sequence (i.e. sequence label, sequence type, if the sequence is primary, etc.).",
           "type": "array",
-          "items": [
-            {
-              "$ref": "Sequence.json"
-            }
-          ]
+          "items": [{
+            "$ref": "Sequence.json"
+          }]
         }
       }
     }
